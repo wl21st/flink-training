@@ -16,8 +16,9 @@
  */
 
 plugins {
-    id 'com.github.johnrengelman.shadow' version '7.0.0' apply false
-    id "com.diffplug.spotless" version "6.4.2" apply false
+    id 'com.github.johnrengelman.shadow' version '7.1.2' apply false
+    id "com.diffplug.spotless" version "6.5.0" apply false
+    id "com.github.ben-manes.versions" version '0.42.0'
 }
 
 description = "Flink Training Exercises"
@@ -95,10 +96,10 @@ subprojects {
 
     ext {
         javaVersion = '1.8'
-        flinkVersion = '1.14.0'
+        flinkVersion = '1.14.4'
         scalaBinaryVersion = '2.12'
-        log4jVersion = '2.12.1'
-        junitVersion = '4.13'
+        log4jVersion = '2.17.2'
+        junitVersion = '4.13.2'
     }
 
     sourceCompatibility = javaVersion
