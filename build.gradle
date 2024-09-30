@@ -16,9 +16,9 @@
  */
 
 plugins {
-    id 'com.github.johnrengelman.shadow' version '7.1.2' apply false
-    id "com.diffplug.spotless" version "6.5.0" apply false
-    id "com.github.ben-manes.versions" version '0.42.0'
+    id 'com.github.johnrengelman.shadow' version '8.1.1' apply false
+    id "com.diffplug.spotless" version "6.25.0" apply false
+    id "com.github.ben-manes.versions" version '0.51.0'
 }
 
 description = "Flink Training Exercises"
@@ -95,10 +95,11 @@ subprojects {
     apply plugin: 'eclipse'
 
     ext {
-        javaVersion = '1.8'
-        flinkVersion = '1.14.4'
+        javaVersion = '11'
+        flinkVersion = '1.20.0'
+        flinkScalaVersion = '1.14.6'
         scalaBinaryVersion = '2.12'
-        log4jVersion = '2.17.2'
+        log4jVersion = '2.24.0'
         junitVersion = '4.13.2'
     }
 
@@ -127,13 +128,13 @@ subprojects {
         shadow "org.apache.logging.log4j:log4j-api:${log4jVersion}"
         shadow "org.apache.logging.log4j:log4j-core:${log4jVersion}"
 
-        shadow "org.apache.flink:flink-clients_${scalaBinaryVersion}:${flinkVersion}"
+        shadow "org.apache.flink:flink-clients_${scalaBinaryVersion}:${flinkScalaVersion}"
         shadow "org.apache.flink:flink-java:${flinkVersion}"
-        shadow "org.apache.flink:flink-streaming-java_${scalaBinaryVersion}:${flinkVersion}"
+        shadow "org.apache.flink:flink-streaming-java_${scalaBinaryVersion}:${flinkScalaVersion}"
         shadow "org.apache.flink:flink-streaming-scala_${scalaBinaryVersion}:${flinkVersion}"
 
         // allows using Flink's web UI when running in the IDE:
-        shadow "org.apache.flink:flink-runtime-web_${scalaBinaryVersion}:${flinkVersion}"
+        shadow "org.apache.flink:flink-runtime-web_${scalaBinaryVersion}:${flinkScalaVersion}"
 
         if (project != project(":common")) {
             implementation project(path: ':common')
